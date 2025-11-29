@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="../frontend/src/img/earist-logo.png" type="image/png" />
+    <link rel="stylesheet" href="css/encode-leave.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <title>Encode Leave</title>
+</head>
+<body>
+    <div id="header"></div>
+    <div id="sidebar"></div>
+    <div id="overlay"></div>
+
+    <main class="main-content">
+        <h1 class="page-title">Leave Encoding Module</h1>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <div class="control-group">
+                <label for="employee-select" class="control-label">Employee Name</label>
+                <select id="employee-select" class="control-select">
+                    <option value="">Select Employee</option>
+                    <!-- Options populated by JS -->
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="month-select" class="control-label">Month</label>
+                <input type="month" id="month-select" value="2024-09" class="control-input"/>
+            </div>
+            <div class="control-actions">
+                <button id="btn-render-month" class="btn btn-primary">
+                    <i class="fas fa-calendar"></i> Render Month
+                </button>
+                <button id="btn-append-month" class="btn btn-secondary">
+                    <i class="fas fa-plus"></i> Append Month
+                </button>
+            </div>
+        </div>
+
+        <!-- Leave Table Container -->
+        <div id="leave-table-container" class="table-container" style="display: none;">
+            <!-- Employee Info Card -->
+            <div class="employee-info-card">
+                <div class="info-header">
+                    <h3>Employee Information</h3>
+                </div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Name:</label>
+                        <span id="emp-name">-</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Position:</label>
+                        <span id="emp-position">-</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Status:</label>
+                        <span id="emp-status">-</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Civil Status:</label>
+                        <span id="emp-civil-status">-</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Date of Entry:</label>
+                        <span id="emp-entry-date">-</span>
+                    </div>
+                    <div class="info-item">
+                        <label>GSIS Policy No:</label>
+                        <span id="emp-gsis">-</span>
+                    </div>
+                    <div class="info-item">
+                        <label>TIN No:</label>
+                        <span id="emp-tin">-</span>
+                    </div>
+                    <div class="info-item">
+                        <label>National Reference Card No:</label>
+                        <span id="emp-nrc">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table will be rendered here by JS -->
+            <div id="leave-table-wrapper"></div>
+
+            <!-- Save Button -->
+            <div class="table-footer">
+                <button id="btn-save-leave-records" class="btn btn-save">
+                    <i class="fas fa-save"></i> Save Leave Records
+                </button>
+            </div>
+        </div>
+    </main>
+
+  <script src="js/loadComponents.js"></script>
+  <script src="js/encode-leave.js"></script>
+</body>
+</html>

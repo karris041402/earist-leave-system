@@ -1,7 +1,7 @@
 <?php
 class Admin {
     private $conn;
-    private $table = "admin";
+    private $table = "admins";
 
     public function __construct($db) {
         $this->conn = $db;
@@ -16,8 +16,8 @@ class Admin {
     }
 
     public function findById($id) {
-        $query = "SELECT id, username, email, created_at 
-                  FROM " . $this->table . " 
+        $query = "SELECT id, username, email, created_at
+                  FROM " . $this->table . "
                   WHERE id = :id LIMIT 1";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":id", $id);
@@ -26,12 +26,12 @@ class Admin {
     }
 
     public function create($data) {
-        $query = "INSERT INTO " . $this->table . " 
-                  (username, password, email) 
+        $query = "INSERT INTO " . $this->table . "
+                  (username, password, email)
                   VALUES (:username, :password, :email)";
-        
+
         $stmt = $this->conn->prepare($query);
-        
+
         $stmt->bindParam(":username", $data['username']);
         $stmt->bindParam(":password", $data['password']);
         $stmt->bindParam(":email", $data['email']);

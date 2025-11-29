@@ -18,6 +18,10 @@ class Router {
         $uri = str_replace('/backend', '', $uri);
         $uri = rtrim($uri, '/');
 
+        // Debug log
+        error_log("DEBUG Router: URI after normalization = " . $uri);
+        error_log("DEBUG Router: Method = " . $method);
+
         // =======================
         // AUTH ROUTES
         // =======================
@@ -47,7 +51,7 @@ class Router {
             return $this->employeeController->show($matches[1]);
         }
 
-        if ($uri === '/api/employees' && $method === 'POST') {
+        if (($uri === '/api/employees' || $uri === '/api/employees/create') && $method === 'POST') {
             AuthMiddleware::authenticate();
             return $this->employeeController->create();
         }

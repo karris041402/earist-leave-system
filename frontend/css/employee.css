@@ -10,7 +10,7 @@ body {
   margin-left: 70px;
   padding: 2rem;
   transition: margin-left 0.3s ease;
-  min-height: 100vh;
+  margin-top: 120px;
 }
 
 .page-header {

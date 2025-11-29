@@ -20,9 +20,37 @@ require_once __DIR__ . '/utils/Validator.php';
 require_once __DIR__ . '/middleware/AuthMiddleware.php';
 require_once __DIR__ . '/routes/api.php';
 
-// Parse request
-$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+// Parse request - Support both URL rewriting and query parameters
+$uri = isset($_GET['route']) ? '/' . $_GET['route'] : parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $method = $_SERVER['REQUEST_METHOD'];
+
+// If we have query parameters, build the API path
+if (isset($_GET['route'])) {
+    $route = $_GET['route'];
+    $action = isset($_GET['action']) ? $_GET['action'] : '';
+
+    // Map route and action to API endpoint
+    if ($action) {
+        $uri = '/api/' . $route . '/' . $action;
+    } else {
+        $uri = '/api/' . $route;
+    }
+}
+
+// Remove base path from URI if present
+$uri = str_replace('/backend', '', $uri);
+$uri = str_replace('/index.php', '', $uri);
+$uri = rtrim($uri, '/');
+
+if (empty($uri)) {
+    Response::error('No route specified', 400);
+    exit;
+}
+
+// Debug log
+error_log("DEBUG: Full REQUEST_URI = " . $_SERVER['REQUEST_URI']);
+error_log("DEBUG: Parsed URI = " . $uri);
+error_log("DEBUG: Method = " . $method);
 
 // Route request
 try {

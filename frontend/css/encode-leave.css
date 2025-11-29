@@ -1,0 +1,350 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6f8;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+
+.main-content {
+    margin-left: 70px;
+    overflow-y: auto;
+    margin-left: 70px;
+    padding: 2rem;
+    transition: margin-left 0.3s ease;
+    margin-top: 120px;
+}
+
+.page-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        /* Control Panel */
+        .control-panel {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+
+        .control-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .control-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+
+        .control-select,
+        .control-input {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.875rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            background: white;
+            transition: all 0.15s;
+        }
+
+        .control-select:focus,
+        .control-input:focus {
+            outline: none;
+            border-color: #922232;
+            box-shadow: 0 0 0 3px rgba(146, 34, 50, 0.1);
+        }
+
+        .control-select {
+            padding-right: 2.5rem;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+            appearance: none;
+        }
+
+        .control-actions {
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-end;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: #922232;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #7a1c29;
+        }
+
+        .btn-secondary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #2563eb;
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        /* Table Container */
+        .table-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+
+        /* Employee Info Card */
+        .employee-info-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #922232;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-header {
+            border-bottom: 2px solid #922232;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-header h3 {
+            color: #922232;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        @media (max-width: 992px) {
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-item {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .info-item label {
+            font-weight: 600;
+            color: #333;
+            min-width: 150px;
+        }
+
+        .info-item span {
+            color: #555;
+            flex: 1;
+        }
+
+        /* Table Footer */
+        .table-footer {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #e5e7eb;
+            text-align: right;
+        }
+
+        .btn-save {
+            background: linear-gradient(135deg, #922232 0%, #8b151e 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(146, 34, 50, 0.3);
+        }
+
+        .btn-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(146, 34, 50, 0.4);
+        }
+
+        /* Leave Table Styles */
+        .leave-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.75rem;
+            table-layout: auto;
+        }
+
+        .leave-table th,
+        .leave-table td {
+            border: 1px solid #242020;
+            padding: 0.4rem;
+            text-align: center;
+            min-width: 30px;
+        }
+
+        .leave-table thead th {
+            background: #e5e7eb;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .leave-table tbody th {
+            background: #f9fafb;
+            font-weight: 500;
+        }
+
+        /* VL Headers */
+        .vl-header {
+            background: #ad3d3d !important;
+            color: #fef3c7;
+            font-weight: 600;
+        }
+
+        /* SL Headers */
+        .sl-header {
+            background: #fef3c7 !important;
+            color: #92400e;
+            font-weight: 600;
+        }
+
+        /* Special backgrounds */
+        .bg-gray-100 {
+            background: #f3f4f6;
+        }
+
+        .bg-gray-200 {
+            background: #e5e7eb;
+        }
+
+        .bg-yellow-200 {
+            background: #fef08a;
+            font-weight: 600;
+        }
+
+        /* Day Cell */
+        .day-cell {
+            padding: 0;
+        }
+
+        .day-dropdown {
+            width: 100%;
+            border: none;
+            padding: 0.25rem;
+            font-size: 0.75rem;
+            background: transparent;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .day-dropdown:focus {
+            outline: 2px solid #922232;
+            background: #fff;
+        }
+
+        /* Auto-input fields */
+        .vl-auto-input {
+            width: 60px;
+            border: none;
+            padding: 0.25rem;
+            font-size: 0.75rem;
+            text-align: center;
+        }
+
+        .vl-auto-input:focus {
+            outline: none;
+            border-color: #922232;
+        }
+
+        /* Text sizes */
+        .text-xs {
+            font-size: 0.7rem;
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+
+            .control-panel {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .control-group {
+                width: 100%;
+            }
+
+            .control-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .leave-table {
+                font-size: 0.65rem;
+            }
+
+            .leave-table th,
+            .leave-table td {
+                padding: 0.25rem;
+                min-width: 25px;
+            }
+        }

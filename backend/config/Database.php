@@ -7,7 +7,7 @@ class Database {
     private $conn;
 
     public function __construct() {
-        $config = require_once __DIR__ . '/config.php';
+        $config = require __DIR__ . '/config.php';
         $this->host = $config['db_host'];
         $this->db_name = $config['db_name'];
         $this->username = $config['db_user'];
