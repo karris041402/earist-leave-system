@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2025 at 06:22 PM
+-- Generation Time: Dec 01, 2025 at 06:01 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `earisthr-leave-system`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `username`, `email`, `password`, `created_at`) VALUES
+(1, 'admin', 'admin@earist.edu.ph', '$2y$10$vsjf4O1DGiYwB0ypjLPYeuc8SUDt5DDVWNLWZv54dq7j1pwukBTTq', '2025-11-29 02:48:26');
 
 -- --------------------------------------------------------
 
@@ -53,8 +74,24 @@ CREATE TABLE `employees` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `employees`
+--
+
+INSERT INTO `employees` (`id`, `first_name`, `middle_name`, `last_name`, `birthday`, `gender`, `civil_status`, `email_address`, `phone_number`, `address`, `position`, `department`, `employee_status`, `entrance_duty`, `gsis_policy_number`, `tin_number`, `national_reference_card_no`, `sss_number`, `philhealth_number`, `pagibig_number`, `created_at`, `updated_at`) VALUES
+(1, 'Karris', 'Midtimbang', 'Angkua', '2025-11-06', 'Male', 'Married', 'angkua.h.bscs@gmail.com', '09541477179', '818-A Gunao St. Quiapo, Manila', 'Student Assistant', 'IT', 'Temporary', '2025-11-06 00:00:00', '', '', '', '', '', '', '2025-11-29 02:50:55', '2025-11-29 02:50:55'),
+(2, 'Abigail', 'J.', 'Purificacion', '2025-12-13', 'Female', 'Single', 'purificacion@gmail.com', '0546574656545', 'Quiapo, Manila', 'ADMINISTRATIVE ASSISTANT II', 'Admin', 'Permanent', '2024-09-02 00:00:00', '', '', '', '', '', '', '2025-12-01 03:22:46', '2025-12-01 03:22:46');
+
+--
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indexes for table `employees`
@@ -68,10 +105,16 @@ ALTER TABLE `employees`
 --
 
 --
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
