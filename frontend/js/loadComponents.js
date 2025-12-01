@@ -101,17 +101,17 @@ function toggleUserMenu() {
 function logout() {
     Swal.fire({
         title: "Are you sure?",
-        text: "You won't be able to revert this!",
+        text: "You will be logged out of your account.",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
+        confirmButtonText: "Yes, confirm logout!"
         }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire({
-            title: "Deleted!",
-            text: "Your file has been deleted.",
+            title: "Logged Out!",
+            text: "You have been logged out successfully.",
             icon: "success"
             });
             localStorage.removeItem('token');
@@ -131,7 +131,7 @@ function checkAuthStatus() {
 
 document.addEventListener("DOMContentLoaded", () => {
     checkAuthStatus();
-    loadComponent("#header", "components/header.html");
-    loadComponent("#sidebar", "components/sidebar.html");
-    loadComponent("#footer", "components/footer.html");
+    loadComponent("#header", "/earist-leave-system/frontend/components/header.html");
+    loadComponent("#sidebar", "/earist-leave-system/frontend/components/sidebar.html");
+    loadComponent("#footer", "/earist-leave-system/frontend/components/footer.html");
 });
