@@ -1,3 +1,4 @@
+/*
 function addEmployee() {
 document.getElementById('addEmployeeModal').classList.add('active');
 }
@@ -101,3 +102,68 @@ if (confirm('Are you sure you want to delete this employee?')) {
     // Implement delete employee functionality
 }
 }
+
+
+// Fetch all employees from backend
+async function loadEmployees() {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        console.error("No token. Please login.");
+        return;
+    }
+
+    try {
+        const response = await fetch("/earist-leave-system/backend/index.php?route=employees", {
+            method: "GET",
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        });
+
+        const result = await response.json();
+        console.log("Backend response:", result);
+
+        if (result.success && result.data.employees) {
+            displayEmployees(result.data.employees);
+        }
+    } catch (error) {
+        console.error("Fetch error:", error);
+    }
+}
+
+// Display employees in table
+function displayEmployees(employees) {
+    const tableBody = document.getElementById('employeeTableBody');
+    tableBody.innerHTML = ''; // Clear old rows
+
+    employees.forEach(emp => {
+
+        if(emp.length === 0) {
+            const row = `<tr><td colspan="9">No employees found.</td></tr>`;
+            return;
+        }
+
+        const row = `
+            <tr>
+                <td>${emp.first_name} ${emp.middle_name || ''} ${emp.last_name}</td>
+                <td>${emp.position}</td>
+                <td><span class="status-badge">${emp.employee_status}</span></td>
+                <td>${emp.civil_status}</td>
+                <td>${emp.entrance_duty}</td>
+                <td>${emp.gsis_policy_number || '-'}</td>
+                <td>${emp.tin_number || '-'}</td>
+                <td>${emp.national_reference_card_no || '-'}</td>
+                <td>
+                    <button onclick="viewLeaveReports(${emp.id})">View</button>
+                    <button onclick="updateEmployee(${emp.id})">Edit</button>
+                    <button onclick="deleteEmployee(${emp.id})">Delete</button>
+                </td>
+            </tr>
+        `;
+        tableBody.innerHTML += row;
+    });
+}
+
+// Call on page load
+document.addEventListener('DOMContentLoaded', loadEmployees);

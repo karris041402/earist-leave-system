@@ -99,11 +99,25 @@ function toggleUserMenu() {
 
 // Logout function
 function logout() {
-    if (confirm('Are you sure you want to logout?')) {
-        localStorage.removeItem('token');
-        alert('You have been logged out successfully!');
-        window.location.href = '/earist-leave-system/frontend/login.html';
-    }
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success"
+            });
+            localStorage.removeItem('token');
+            window.location.href = '/earist-leave-system/frontend/login.html';
+        }
+    });
 }
 
 function checkAuthStatus() {

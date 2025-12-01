@@ -10,7 +10,7 @@ class Employee {
 
     // Fetch all employees
     public function getAll() {
-        $query = "SELECT * FROM {$this->table} ORDER BY name ASC";
+        $query = "SELECT * FROM {$this->table} ORDER BY last_name ASC";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll();
